@@ -17,6 +17,7 @@ fruit_df = session.sql("SELECT FRUIT_NAME FROM smoothies.public.fruit_options").
 
 # Toon de dataframe
 st.dataframe(data=fruit_df, use_container_width=True)
+st.stop()
 
 # Haal lijst op uit Pandas DataFrame
 fruit_options = fruit_df['FRUIT_NAME'].tolist()
@@ -30,7 +31,7 @@ ingredients_list = st.multiselect(
 
 if ingredients_list:
     ingredients_string = ' '.join(ingredients_list) + ' '
-    st.subheader(ingredients_list + ' Nutrition Information')
+    #st.subheader(ingredients_list + ' Nutrition Information')
     smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")  
     sf_df = st.dataframe(data=smoothiefroot_response.json(), use_container_width=True)
 
