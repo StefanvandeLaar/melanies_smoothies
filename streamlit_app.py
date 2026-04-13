@@ -20,7 +20,7 @@ fruit_df = session.sql("SELECT FRUIT_NAME FROM smoothies.public.fruit_options").
 #st.dataframe(data=fruit_df, use_container_width=True)
 #st.stop()
 
-pd_df=my_dataframe.to_pandas()
+pd_df= dataframe.to_pandas()
 st.dataframe(pd_df)
 st.stop()
 
