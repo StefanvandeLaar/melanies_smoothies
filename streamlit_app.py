@@ -17,7 +17,11 @@ st.write("The name on your Smoothie will be:", name_on_order)
 fruit_df = session.sql("SELECT FRUIT_NAME FROM smoothies.public.fruit_options").to_pandas()
 
 # Toon de dataframe
-st.dataframe(data=fruit_df, use_container_width=True)
+#st.dataframe(data=fruit_df, use_container_width=True)
+#st.stop()
+
+pd_df=my_dataframe.to_pandas()
+st.dataframe(pd_df)
 st.stop()
 
 # Haal lijst op uit Pandas DataFrame
