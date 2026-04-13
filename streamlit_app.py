@@ -14,10 +14,19 @@ st.write("The name on your Smoothie will be:", name_on_order)
 
 cnx = st.connection("snowflake")
 session = cnx.session()
-my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'))
+
+
+# ✅ Direct converteren naar Pandas DataFrame
+my_dataframe = session.table("smoothies.public.fruit_options") \
+    .select(col('FRUIT_NAME')) \
+    .to_pandas()
+
+# ✅ Werkt nu want my_dataframe is een Pandas DataFrame
 st.dataframe(data=my_dataframe, use_container_width=True)
 
-fruit_list = my_dataframe.to_pandas()['FRUIT_NAME'].tolist()  # <-- enige toevoeging
+# ✅ Werkt nu want my_dataframe is een Pandas DataFrame
+fruit_list = my_dataframe['FRUIT_NAME'].tolist()
+
 
 ingredients_list = st.multiselect(
     'Choose up to 5 ingredients:'
