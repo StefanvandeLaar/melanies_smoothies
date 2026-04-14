@@ -18,7 +18,7 @@ session = cnx.session()
 
 # ✅ Direct converteren naar Pandas DataFrame
 my_dataframe = session.table("smoothies.public.fruit_options") \
-    .select(col('FRUIT_NAME')) \
+    .select(col('FRUIT_NAME'),col('SEARCH_ON')) \
     .to_pandas()
 
 # ✅ Werkt nu want my_dataframe is een Pandas DataFrame
@@ -26,6 +26,10 @@ st.dataframe(data=my_dataframe, use_container_width=True)
 
 # ✅ Werkt nu want my_dataframe is een Pandas DataFrame
 fruit_list = my_dataframe['FRUIT_NAME'].tolist()
+
+pd_df=my_dataframe.to_pandas()
+st.dataframe(pf_df)
+st.stop()
 
 
 ingredients_list = st.multiselect(
